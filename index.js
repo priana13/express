@@ -2,6 +2,7 @@ const express = require('express');
 const mysql = require('mysql2');
 const app = express();
 const port = 3000;
+const { User } = require('./models');
 
 // Konfigurasi koneksi ke database MySQL
 const connection = mysql.createConnection({
@@ -24,6 +25,16 @@ app.get('/page', (req, res) => {
   });
 
 });
+
+
+app.get('/users', async (req, res) => {
+
+    const users = await User.findAll();
+    res.json(users);
+  
+  
+});
+
 
 // Menjalankan server
 app.listen(port, () => {
