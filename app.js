@@ -5,15 +5,39 @@ const port = 3000
 
 
 app.get('/', function (req, res) {
-  res.send('Home Page')
+
+  // res.status(500).json({ error: 'message' })
+
+  res.sendFile('./pages/index.html', {
+    root: __dirname
+  });
+
 })
 
+
 app.get('/about', function (req, res) {
-  res.send('Halaman About')
+
+  res.sendFile('./pages/about.html', {
+    root: __dirname
+  });
+
 })
 
 app.get('/kontak', function (req, res) {
-  res.send('Halaman Kontak')
+
+  res.sendFile('./pages/kontak.html', {
+    root: __dirname
+  });
+
+})
+app.get('/produk/:id', function (req, res) {
+
+  res.send('Produk Id:' + req.params.id);
+
+  // res.sendFile('./pages/kontak.html', {
+  //   root: __dirname
+  // });
+
 })
 
 
