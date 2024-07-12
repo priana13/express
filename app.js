@@ -17,6 +17,16 @@ app.get('/kontak', function (req, res) {
 })
 
 
+// semacam midlleware jika user mengakses halaman yang tidak ada
+app.use('/', (req, res) =>{
+
+  res.status(404);
+
+  res.send('<h1">NotFound | 404</h1 >');
+
+})
+
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
