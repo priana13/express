@@ -14,7 +14,12 @@ app.get('/', function (req, res) {
   //   root: __dirname
   // });
 
-  res.render('index');
+  const contact = [{
+                    nama: 'Priana',
+                    hp : "089544555"
+                  }];
+
+  res.render('index', {nama : 'Priana Saputra 2', judul: "Home"});
 
 })
 
