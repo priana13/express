@@ -2,32 +2,41 @@ const express = require('express')
 const app = express()
 const port = 3000
 
-
+// gunakan ejs template engine
+app.set('view engine', 'ejs');
+// app.set('views', './pages');
 
 app.get('/', function (req, res) {
 
   // res.status(500).json({ error: 'message' })
 
-  res.sendFile('./pages/index.html', {
-    root: __dirname
-  });
+  // res.sendFile('./pages/index.html', {
+  //   root: __dirname
+  // });
+
+  res.render('index');
 
 })
 
 
 app.get('/about', function (req, res) {
 
-  res.sendFile('./pages/about.html', {
-    root: __dirname
-  });
+  // res.sendFile('./pages/about.html', {
+  //   root: __dirname
+  // });
+
+  res.render('about');
+
 
 })
 
 app.get('/kontak', function (req, res) {
 
-  res.sendFile('./pages/kontak.html', {
-    root: __dirname
-  });
+  // res.sendFile('./pages/kontak.html', {
+  //   root: __dirname
+  // });
+  res.render('kontak');
+
 
 })
 app.get('/produk/:id', function (req, res) {

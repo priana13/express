@@ -37,6 +37,7 @@
     "eastasianwidth": "^0.2.0",
     "editorconfig": "^1.0.4",
     "ee-first": "^1.1.1",
+    "ejs": "^3.1.6",
     "emoji-regex": "^9.2.2",
     "encodeurl": "^1.0.2",
     "es-define-property": "^1.0.0",
@@ -164,7 +165,6 @@
     "yargs": "^16.2.0",
     "yargs-parser": "^20.2.9"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
