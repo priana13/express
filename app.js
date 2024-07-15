@@ -1,10 +1,13 @@
 const express = require('express')
+const expressLayouts = require('express-ejs-layouts');
 const app = express()
 const port = 3000
 
 // gunakan ejs template engine
 app.set('view engine', 'ejs');
 // app.set('views', './pages');
+
+app.use(expressLayouts);
 
 app.get('/', function (req, res) {
 
@@ -19,7 +22,10 @@ app.get('/', function (req, res) {
                     hp : "089544555"
                   }];
 
-  res.render('index', {nama : 'Priana Saputra 2', judul: "Home"});
+  res.render('index', {
+    layout : 'layouts/main-layouts',
+    judul : 'Home'
+  });
 
 })
 
@@ -30,7 +36,10 @@ app.get('/about', function (req, res) {
   //   root: __dirname
   // });
 
-  res.render('about');
+  res.render('about',{
+    layout : 'layouts/main-layouts',
+    judul : 'About'
+  });
 
 
 })
@@ -40,7 +49,10 @@ app.get('/kontak', function (req, res) {
   // res.sendFile('./pages/kontak.html', {
   //   root: __dirname
   // });
-  res.render('kontak');
+  res.render('kontak', {
+    layout : 'layouts/main-layouts',
+    judul : 'Kontak'
+  });
 
 
 })
