@@ -9,6 +9,20 @@ app.set('view engine', 'ejs');
 
 app.use(expressLayouts);
 
+app.use(express.static('public'));
+
+
+// Aplication lervel Middleware 
+app.use((req, res, next) => {
+
+  console.log('Time ' + Date.now());
+
+  next();
+
+});
+
+
+
 app.get('/', function (req, res) {
 
   // res.status(500).json({ error: 'message' })
