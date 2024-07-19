@@ -3,6 +3,9 @@ const expressLayouts = require('express-ejs-layouts');
 const app = express()
 const port = 3000
 
+const { loadContact , findContact } = require('./utils/contacts');
+
+
 // gunakan ejs template engine
 app.set('view engine', 'ejs');
 // app.set('views', './pages');
@@ -60,23 +63,39 @@ app.get('/about', function (req, res) {
 
 app.get('/kontak', function (req, res) {
 
+  const list_contact = loadContact();
+
+  // console.log( list_contact);
+
+
+
   // res.sendFile('./pages/kontak.html', {
   //   root: __dirname
   // });
   res.render('kontak', {
     layout : 'layouts/main-layouts',
-    judul : 'Kontak'
+    judul : 'Kontak',
+    list_contact
   });
 
 
 })
-app.get('/produk/:id', function (req, res) {
+app.get('/kontak/:nama', function (req, res) {
 
-  res.send('Produk Id:' + req.params.id);
+  const nama = req.params.nama;
+
+  const contact = findContact(nama);
+
+
+  res.render('detail', {
+    layout : 'layouts/main-layouts',
+    contact
+  });
 
   // res.sendFile('./pages/kontak.html', {
   //   root: __dirname
   // });
+
 
 })
 

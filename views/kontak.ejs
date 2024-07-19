@@ -17,17 +17,24 @@
                     <th scope="col">Aksi</th>
                   </tr>
                 </thead>
-                <tbody>                                 
+                <tbody>  
+
+                  <% list_contact.forEach((contact , i) => { %>
                   <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
+                    <th scope="row"><%= i + 1 %></th>
+                    <td> <%= contact.nama %> </td>
+                    <td> <%= contact.hp %> </td>
                     <td>
-                        <a class="btn btn-success btn-sm rounded-pill" href="">
+                        <a class="btn btn-success btn-sm rounded-pill" href="/kontak/<%= contact.nama  %>">
                             <i class="bi bi-eye-fill mr-1"></i>
                             Detail
                         </a>
                     </td>
                   </tr>
+
+                  <% }); %>
+
+
                 </tbody>
               </table>
 
