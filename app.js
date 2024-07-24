@@ -3,7 +3,7 @@ const expressLayouts = require('express-ejs-layouts');
 const app = express()
 const port = 3000
 
-const { loadContact , findContact } = require('./utils/contacts');
+const { loadContact , findContact , wrireContact } = require('./utils/contacts');
 
 
 // gunakan ejs template engine
@@ -13,6 +13,9 @@ app.set('view engine', 'ejs');
 app.use(expressLayouts);
 
 app.use(express.static('public'));
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 
 // Aplication lervel Middleware 
@@ -80,6 +83,31 @@ app.get('/kontak', function (req, res) {
 
 
 })
+
+app.get('/kontak/tambah', function (req, res) {
+
+  
+  res.render('tambah', {
+    layout : 'layouts/main-layouts'    
+  });
+
+});
+
+app.post('/kontak/tambah', function (req, res) {
+  
+  const data = req.body;
+
+ 
+  console.log(data);
+
+  wrireContact(data.nama, data.hp);
+
+  res.redirect( '/kontak' );
+
+
+})
+
+
 app.get('/kontak/:nama', function (req, res) {
 
   const nama = req.params.nama;

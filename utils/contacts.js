@@ -49,8 +49,29 @@ const findContact = (nama) =>{
 
 }
 
+const wrireContact = (nama, hp) => {
+
+    const newData = {
+        nama: nama,
+        hp: hp
+    };
+
+    const fileBuffer = fs.readFileSync('data/contacts.json', 'utf-8');
+
+    const contacts = JSON.parse(fileBuffer); 
+
+    contacts.push(newData);
+
+    fs.writeFileSync(dataPath , JSON.stringify( contacts ) , 'utf-8');
+
+    return contacts;
+
+
+}
+
 
 
 module.exports = {   
-    loadContact , findContact
+    loadContact , findContact , wrireContact
 }
+
